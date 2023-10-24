@@ -1,0 +1,490 @@
+6.1  Create a class named ‘String’ with one data member of type char *,
+which stores a string. Include default, parameterized and copy
+constructor to initialize the data member. Write a program to test this
+class.
+
+#include<iostream>
+using namespace std;
+class string
+{
+protected:
+char *name;
+public:
+string()
+{
+int name = "hello world"<<endl;
+}
+string(int x)
+{
+	name = x;
+}
+void disp()
+{
+cout<<"the name is "<<name<<endl;
+}
+};
+int main()
+{
+string s;string s("c++");
+s.disp();
+return 0;
+}
+
+
+6.2 Write a base class named Employee and derive classes Male
+employee and Female Employee from it. Every employee has an id,
+name and a scale of salary. Make a function ComputePay (in hours) to
+compute the weekly payment of every employee. A male employee is
+paid on the number of days and hours he works. The female employee
+gets paid the wages for 40 hours a week, no matter what the actual hours
+are. Test this program to calculate the pay of employee.
+
+#include<iostream>
+using namespace std;
+class emp
+{
+    protected:
+int id,salary,days,working_hrs,salary_day;
+char name[50];
+};
+
+class male_emp:public emp
+{
+public:
+void det()
+{
+    cout<<"for male"<<endl;
+	cout<<"enter your id"<<endl;
+	cin>>id;
+	cout<<"enter your name"<<endl;
+	cin>>name;
+	cout<<"enter your salary per day"<<endl;
+	cin>>salary_day;
+	cout<<"enter your working hrs"<<endl;
+	cin>>working_hrs;
+}
+void computepay()
+{
+	salary = (salary_day * working_hrs )* 1000;
+}
+void display()
+{
+	cout<<"	your details are ";
+	cout<<" your id is "<<id<<endl<<"name is "<<name<<endl<<"your working hrs are"<<working_hrs<<"and your salary is"<<salary<<endl<<endl;
+}
+};
+class female_emp:public emp
+{
+public:
+void det()
+{
+    cout<<"for female"<<endl;
+	cout<<"enter your id"<<endl;
+	cin>>id;
+	cout<<"enter your name"<<endl;
+	cin>>name;
+	cout<<"enter your salary per day"<<endl;
+	cin>>salary_day;
+}
+void computepay()
+{
+	salary = (days * 40 )* 1000;
+}
+void display()
+{
+	cout<<"	your details are "<<endl;
+	cout<<" your id is "<<id<<endl<<"name is "<<name<<endl<<"and your salary is"<<salary<<endl;
+}
+};
+int main()
+{
+	male_emp me;
+	female_emp fe;
+	me.det();
+	me.computepay();
+	me.display();
+	fe.det();
+	fe.computepay();
+	fe.display();
+	return 0;
+}
+
+
+6.3 Create a class called scheme with scheme_id, scheme_name,
+outgoing_rate, and message charge. Derive customer class form scheme
+and include cust_id, name and mobile_no data.Define necessary
+functions to read and display data. Create a menu driven program to
+read call and message information for a customer and display the detail
+bill.
+
+#include<iostream>
+using namespace std;
+class scheme
+{
+	int scheme_id,name,outgoing_rate,mess_charge;
+};
+class customer:public scheme
+{
+	private:
+	cus_id,cus_name,mobile_no;
+	public:
+	void set()
+{
+		cout<<”enter your sch_id;
+		cin>>customer_id;
+		cout<<”enter your sch_name;
+		cin>>customer_name
+		cout<<”enter your mobile_no;
+		cin>>mobile_no;
+}
+	void compute( int a)
+{	
+	int n;
+	n = a;
+	if ( n == 1)
+{	
+	outgoing = 0.5
+}
+}
+	void disp()
+{
+	cout<<”your scheme_id”<<scheme_id;
+	cout<<”your name is “<<name;
+	cout<<”your mobile_no is”<<mobile_no;
+	cout<<”you had choose”<<scheme_name<<”scheme”;
+	cout<<”your outgoing_rate is”<<out_rate;
+	cout<<”your message charge is”<<mess_charge;
+}
+};
+int main()
+{
+int n;
+cout<<”enter your choice”;
+cin>>n;
+customer c;
+c.set();
+c.compute();
+c.disp();
+return 0;
+}
+
+7.1 Write a program with use of inheritance: Define a class publisher
+that stores the name of the title. Derive twoclasses book and tape, which
+inherit publisher. Book class contains member data called page no and
+tape class contain time for playing. Define functions in the appropriate
+classes to get and print the details.
+
+#include<iostream>
+using namespace std;
+class publisher
+{
+public:
+	int book_pages;
+	char book_title[20];
+    char tape_title[20];
+};
+class book:public publisher
+{
+public:
+    void sett()
+    {
+        cout<<"enter your book title : ";
+        cin>>book_title;
+        cout<<"enter the pages of book : ";
+        cin>>book_pages;
+    }
+    void disp()
+    {
+        cout<<"The title of the book is  : "<<book_title<<endl;
+        cout<<"The book contain  : "<<book_pages<<endl<<" pages "<<endl;
+    }
+};
+class tape:public book
+{
+protected:
+    int hh,mm,ss;
+    public:
+    void compute()
+    {
+        cout<<endl;
+        cout<<"enter your tape title : ";
+        cin>>tape_title;
+        cout<<"The tape contain  : "<<endl;
+        cin>>hh>>mm>>ss;
+    }
+    void disp()
+    {
+        cout<<"The title of the tape is  : "<<tape_title<<endl;
+        cout<<"The tape contain  : "<<hh<<" hh "<<mm<<" mm "<<ss<<" ss "<<endl;
+
+    }
+};
+int main()
+{
+    int n;
+    cout<<"enter your choice : 1 ->book 2->tape ";
+    cin>>n;
+    first:
+    if(n == 1)
+       {
+         book b;
+         b.sett();
+        b.disp();
+       }
+    else if(n == 2)
+        {
+    tape t;
+    t.compute();
+    t.disp();
+        }
+        else
+        {
+
+            char ch,R ,r;
+            cout<<"you had entered invalid entry:";
+            cout<<"enter R to restart";
+            cin>>ch;
+            if( ch == R || ch ==r)
+            {
+               goto first;
+            }
+        }
+    return 0;
+}
+
+
+7.2 Create a class account that stores customer name, account no, types
+of account. From this derive classes cur_acc and sav_acc to include
+necessary member function to do the following:• Accepts deposit from
+customer and update balance• Compute and Deposit interest• Permit
+withdrawal and Update balance.
+
+#include<iostream>
+using namespace std;
+class account
+{
+    protected:
+    int acc_no,value,choice,number,balance = 0;;
+    char acc_name[40],acc_type[20];
+
+};
+class saving:public account
+{
+    public:
+    void sett()
+    {
+        cout<<"enter your account number";
+        cin>>acc_no;
+        cout<<"enter your account holder name";
+        cin>>acc_name;
+    };
+    void compute()
+    {
+
+    cout<<"enter your choice :"<<endl;
+    cout<<"1 ->withdraw 2->deposit"<<endl;
+    cin>>choice;
+    if(choice == 1)
+    {
+        cout<<"enter the amount your want to withdraw";
+        cin>>number;
+        balance = balance + number;
+        cout<<"the balance in your account is "<< balance;
+    }
+    else if( choice == 2)
+    {
+        cout<<"enter the amount your want to deposit";
+        cin>>number;
+        balance = balance + number;
+        cout<<"the balance in your account is "<< balance;
+    }
+    }
+    void disp()
+    {
+        cout<<"your account number is "<<acc_no;
+        cout<<"your name is "<<acc_name;
+        cout<<"your current balance in your current account is :  "<<balance;
+
+    }
+};
+class current:public saving
+{
+ public:
+    void sett()
+    {
+        cout<<"enter your account number";
+        cin>>acc_no;
+        cout<<"enter your account holder name";
+        cin>>acc_name;
+    }
+     void compute()
+    {
+
+    cout<<"enter your choice :";
+    cin>>choice;
+    if(choice == 1)
+    {
+        cout<<"enter the amount your want to withdraw";
+        cin>>number;
+        balance = balance + number;
+        cout<<"the balance in your saving account is "<< balance;
+    }
+    else if( choice == 2)
+    {
+        cout<<"enter the amount your want to deposit";
+        cin>>number;
+        balance = balance + number;
+        cout<<"the balance in your account is "<< balance;
+    }
+    }
+    void disp()
+    {
+        cout<<"your account number is "<<acc_no;
+        cout<<"your name is "<<acc_name;
+        cout<<"your current balance in your current account is :  "<<balance;
+
+    }
+};
+
+int main()
+{
+
+
+    int n;
+    cout<<"enter your account type"<<endl;
+    cout<<"1 -> saving 2 -> current"<<endl;
+    cin>>n;
+
+    if(n == 1)
+    {
+         saving s;
+    s.sett();
+    s.compute();
+    s.disp();
+    }
+    else if(n == 2)
+    {
+    current c;
+    c.sett();
+    c.compute();
+    }
+    else
+    {
+        cout<<"you had entered invalid entry try again"<<endl;
+        main();
+    }
+    return 0;
+
+}
+
+
+7.3.Write a base class named Employee and derive classes Male
+employee and Female Employee from it. Every employee has an id,
+name and a scale of salary. Make a function ComputePay (in hours) to
+compute the weekly payment of every employee. A male employee is
+paid on the number of days and hours he works. The female employee
+gets paid the wages for 40 hours a week, no matter what the actual hours
+are. Test this program to calculate the pay of employee.
+
+#include<iostream>
+using namespace std;
+class emp
+{
+    protected:
+int id,salary,days,working_hrs,salary_day;
+char name[50];
+};
+
+class male_emp:public emp
+{
+public:
+void det()
+{
+    cout<<"for male"<<endl;
+	cout<<"enter your id"<<endl;
+	cin>>id;
+	cout<<"enter your name"<<endl;
+	cin>>name;
+	cout<<"enter your salary per day"<<endl;
+	cin>>salary_day;
+	cout<<"enter your working hrs"<<endl;
+	cin>>working_hrs;
+}
+void computepay()
+{
+	salary = (salary_day * working_hrs )* 1000;
+}
+void display()
+{
+	cout<<"	your details are ";
+	cout<<" your id is "<<id<<endl<<"name is "<<name<<endl<<"your working hrs are"<<working_hrs<<"and your salary is"<<salary<<endl<<endl;
+}
+};
+class female_emp:public emp
+{
+public:
+void det()
+{
+    cout<<"for female"<<endl;
+	cout<<"enter your id"<<endl;
+	cin>>id;
+	cout<<"enter your name"<<endl;
+	cin>>name;
+	cout<<"enter your salary per day"<<endl;
+	cin>>salary_day;
+}
+void computepay()
+{
+	salary = (days * 40 )* 1000;
+}
+void display()
+{
+	cout<<"	your details are "<<endl;
+	cout<<" your id is "<<id<<endl<<"name is "<<name<<endl<<"and your salary is"<<salary<<endl;
+}
+};
+int main()
+{
+	male_emp me;
+	female_emp fe;
+	me.det();
+	me.computepay();
+	me.display();
+	fe.det();
+	fe.computepay();
+	fe.display();
+	return 0;
+}
+
+
+8.1  Create a class vehicle which stores the vehicleno and chassisno as a
+member. Define another class for scooter, which inherits the data
+members of the class vehicle and has a data member for a storing
+wheels and company. Define another class for which inherits the data
+member of the class vehicle and hasa data member for storing price and
+company. Display the data from derived class. Use virtual function
+
+8.2 Create a base class shape. Use this class to store two double type
+values that could be used to compute the area of figures. Derive two
+specific classes called triangle and rectangle from the base shape. Add
+to the base class, a member function get_data() to initialize the base
+class data members and another member function display_area() to
+compute and display the area of figures. Make display_area() as a
+virtual function and redefine this function in the derived class to suit
+their requirements.
+8.3 Write a program to demonstrate the use of pure virtual function. 8.4
+For multiple inheritance, write a program to show the invocation of
+constructor and destructor.
+8.5 Create a class string with character array as a data member and write
+a program to add two strings with use of operator overloading concept.
+8.6 Create a class distance which contains feet and inch as a data
+member. Overhead = =, <and> operator for the same class. Create
+necessary functions and constructors too.
+
+
+9.1 Create a class MARIX of size mxn. Overload + and –operators for
+addition and subtraction of the MATRIX.
+
+
+
+
